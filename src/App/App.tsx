@@ -13,7 +13,7 @@ import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 
 interface AppState {
   loaded: boolean;
-  result: '3D' | 'Not 3D' | 'Loading' | 'Waiting';
+  result: '3D-Printed' | 'Not 3D-Printed' | 'Loading' | 'Waiting';
   percentage: string;
 }
 
@@ -84,11 +84,11 @@ class App extends React.Component<{}, AppState> {
       const outputData = output.output;
 
       if (outputData[0] > outputData[1]) {
-        this.setState((prevState: AppState) => { return {...prevState, result: 'Not 3D', percentage: (outputData[0] * 100).toFixed(3)} });
+        this.setState((prevState: AppState) => { return {...prevState, result: 'Not 3D-Printed', percentage: (outputData[0] * 100).toFixed(3)} });
       }
 
       else {
-        this.setState((prevState: AppState) => { return {...prevState, result: '3D', percentage: (outputData[1] * 100).toFixed(3)} });
+        this.setState((prevState: AppState) => { return {...prevState, result: '3D-Printed', percentage: (outputData[1] * 100).toFixed(3)} });
       }
     });
   }
@@ -97,10 +97,17 @@ class App extends React.Component<{}, AppState> {
     const hidden = {display: 'none'};
     return (
       <div>
-        <Toolbar colored title="3D or Not?" />
+        <Toolbar colored title="Is the prototype 3D-Printed or not?"/>
         {this.state.loaded && <div className="container">
           <Card>
+            <CardTitle title = "Hello there! Read me first!" subtitle={"This is an interactive demonstration of a convolutional neural network, "+
+            "or CNN, created by Noah Rubin for PSU's THRED Lab. It was trained on 10,000 images gathered both from the web and " +
+            "from the lab itself. Please try it out for yourself. Please keep in mind that this network should only be used to identify design prototypes,"+
+            "and for the purpose of this experiment please only evaluate its ability to complete its given task. Obviously, feel free to play around,"
+            +"but accuracy is not guaranteed for other images." } />
+            <CardTitle title = "" subtitle = "Have fun!" />
             <CardTitle title="Input" />
+
             <CardText>
               <TextField id="url" label="URL" onChange={this.onURL.bind(this)} />
               <br />
