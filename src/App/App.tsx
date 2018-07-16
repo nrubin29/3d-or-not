@@ -101,15 +101,16 @@ class App extends React.Component<{}, AppState> {
         {this.state.loaded && <div className="container">
           <Card>
             <CardTitle title = "Hello there! Read me first!" subtitle={"This is an interactive demonstration of a convolutional neural network, "+
-            "or CNN, created by Noah Rubin for PSU's THRED Lab. It was trained on 10,000 images gathered both from the web and " +
-            "from the lab itself. Please try it out for yourself. Please keep in mind that this network should only be used to identify design prototypes,"+
-            "and for the purpose of this experiment please only evaluate its ability to complete its given task. Obviously, feel free to play around,"
-            +"but accuracy is not guaranteed for other images." } />
+            "or CNN, created by Noah Rubin for PSU's THRED Lab. It was trained on over 50,000 images gathered both from the web and " +
+            "from the lab itself. Please try it out for yourself. Please keep in mind that this network should only be used to identify design prototypes, "+
+            "and for the purpose of this experiment please only evaluate its ability to complete this given task. Obviously, feel free to play around, "
+            +"but accuracy is not guaranteed for other types of images." } />
             <CardTitle title = "" subtitle = "Have fun!" />
             <CardTitle title="Input" />
 
             <CardText>
-              <TextField id="url" label="URL" onChange={this.onURL.bind(this)} />
+                <p>To use the model, download the image you'd like to test to your computer or mobile device, and then use the box below to import it to the demo.</p>
+              {/*<TextField id="url" label="URL" onChange={this.onURL.bind(this)} />*/}
               <br />
               <Dropzone onDrop={this.onDrop.bind(this)}>
                 <p>Drop an image here or click to select</p>
